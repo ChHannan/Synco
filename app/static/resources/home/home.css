@@ -1,0 +1,149 @@
+
+
+body{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+p{
+    font-size: 15px;
+}
+.header{
+    background-image: url("home.png");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    height: 625px;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -webkit-background-size: cover;
+}
+
+
+.logo img{
+    width: 150px;
+    padding-bottom: 50px;
+    color: white;
+}
+
+.header-text h1{
+    color: white;
+    font-size: 35px;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+.header-btns{
+    margin-top: 90px;
+    margin-bottom: 50px;
+}
+
+
+.navbar-brand img{
+    width: 50px;
+    height: 50px;
+}
+#item{
+    color: black;
+}
+
+#item1{
+    color: black;
+}
+.header-img img{
+    width: 100%;
+}
+
+.des p{
+    color: white;
+    padding-top: 30px;
+    font-weight: 500;
+    font-size: larger;
+}
+.section-start{
+    padding-top: 70px;
+    padding-bottom: 150px;
+}
+.carousel{
+    padding-bottom: 30px;
+    padding-top: 70px;
+}
+
+.about-us h2{
+    text-align: center;
+    font-size: 30px;
+    font-weight: 400;
+    position: relative;
+    text-transform: uppercase;
+    color: #333;
+}
+
+.about-us p{
+    font-size: 18px;
+    font-weight: 300;
+    color: #333;
+    text-align: center;
+    margin-top: 45px;
+}
+
+.choose-us{
+    padding-top: 70px;
+    padding-left: 20px;
+
+}
+.choose-us h1{
+    font-size: 30px;
+    font-weight: 600;
+    position: relative;
+    text-transform: uppercase;
+    color: #333;
+}
+
+.choose-us-des{
+    padding-left: 50px;
+}
+
+.choose-us-item h4{
+    font-size: 20px;
+    font-weight: 500;
+    position: relative;
+    text-transform: uppercase;
+    color: #333;
+}
+
+.choose-us-item p{
+    font-size: 15px;
+    font-weight: 300;
+    color: #333;
+}
+
+.social-icons ul{
+    margin: 0;
+    padding: 0;
+    text-align: right;
+}
+.social-icons ul li{
+    list-style: none;
+    display: inline;
+    padding: 10px;
+}
+.footer{
+    padding-bottom: 30px;
+    padding-top: 25px;
+    background-color: #1a1a1a;
+
+}
+#copyright a{
+    color: #129CF3;
+}
+#copyright p{
+    font-size: 14px;
+    color: white;
+    text-transform: uppercase;
+}
+
