@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+	<head>
+	<meta name="viewport" content="width=1024"></meta>
+	<meta charset="UTF-8">
+	<title> {{ title }} </title>
+		
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	
+	<style>
+		.body {
+			margin: 0em 0em 0 0em;
+		}
+		.deepshd {
+			color: #e0dfdc;
+			background-color: #333;
+			letter-spacing: .1em;
+			text-shadow: 0 -1px 0 #fff, 0 1px 0 #2e2e2e, 0 2px 0 #2c2c2c, 0 3px 0 #2a2a2a, 0 4px 0 #282828, 0 5px 0 #262626, 0 6px 0 #242424, 0 7px 0 #222, 0 8px 0 #202020, 0 9px 0 #1e1e1e, 0 10px 0 #1c1c1c, 0 11px 0 #1a1a1a, 0 12px 0 #181818, 0 13px 0 #161616, 0 14px 0 #141414, 0 15px 0 #121212, 0 22px 30px rgba(0, 0, 0, 0.9);
+		}
+	</style>
+	</head>
+	
+	<body>
+		<div class="all">
+            <nav class="navbar navbar-dark bg-dark">
+                <a style="margin-left: 10px" href="{{ url_for('home') }}">
+                    <img src="/static/syncoimg4.png" width="75" height="55" class="d-inline-block align-top" alt="" >
+                </a>
+                {% if current_user.is_anonymous %}
+                <a class="nav-link" style="color: white;position: fixed;right: 100px" href="{{ url_for('login') }}">Login</a>
+				<a class="nav-link" style="color: white" href="{{ url_for('register') }}">Register</a>
+                {% else %}
+                <div class="btn-group">
+					<button type="button" class="btn btn-secondary" >{{ current_user.username.title() }}</button>
+					  <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #343a40">
+						<span class="sr-only">Toggle Dropdown</span>
+					  </button>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href="{{ url_for('user', username=current_user.username) }}">Profile</a>
+							<a class="dropdown-item" href="{{ url_for('upload') }}">Upload</a>
+							<a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a>
+						</div>
+						{% endif %}
+                </div>
+            </nav>
+			<div class="body">
+			{% with messages = get_flashed_messages() %}
+			{% if messages %}
+			<div class="alert alert-primary" style="padding-bottom: 6px;padding-top: 10px">
+			    {% for message in messages %}
+                    <strong><li></strong>
+                    {{ message }}
+                {% endfor %}
+            </div>
+			{% endif %}
+			{% endwith %}
+			{% block content %} {% endblock %}
+			</div>
+		</div>
+    <footer class="bg-dark text-white mt-4" style="position: fixed;bottom: 0px;width: 100%">
+                <a class="nav-link" href="{{ url_for("about") }}" style="color: white;text-align: center">About</a>
+            </footer>
+	</body>
+</html>

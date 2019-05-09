@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+	<div class="navshadow container-fluid" style="background-color: #6F9FD8; height: 100%; padding-bottom: 6.375em; margin-top:1em; margin-bottom: 0.01em; background-image: url('/static/resources/login/background.jpg'); background-size: cover;">
+	<div class="row">
+	<div class="col-lg-12 col-md-12col-sm-12">
+		<div style="padding-top: 1em;">
+		<h1>Sign In</h1>
+		<form action="" method="POST" role="form">
+			{{form.hidden_tag()}}
+
+			{{form.username.label(class="font-weight-bold small")}}
+			{{form.username(class_="form-control", style="width: 15em;", placeholder="Enter username or email")}}
+			{% for error in form.username.errors %}
+			<span style="color : red;">{{error}}</span>
+			{% endfor %}
+			<br>
+
+			{{form.password.label(class="font-weight-bold small")}}
+			{{form.password(class="form-control", style="width: 15em;", placeholder="Enter password")}}
+			{% for error in form.password.errors %}
+			<span style="color : red;">{{error}}</span>
+			{% endfor %}
+
+			<div class="form-check" style="padding-top: 10px; padding-bottom: 5px;">{{form.remember_me()}}
+			{{form.remember_me.label(class="small")}}</div>
+			{{form.submit(class="btn btn-outline-success btn-block", style="width: 15em;")}}
+			<a href="{{ url_for('lost_password') }}" class="btn btn-outline-danger btn-block" role="button", style="width: 15em;">Forgot Password?</a>
+		</form>
+		</div>
+	</div>
+	</div>
+	</div>
+{% endblock %}

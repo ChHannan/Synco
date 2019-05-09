@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+<div class="navshadow container-fluid" style="background-color: #6F9FD8; height: 100%; padding-bottom: 6.375em; margin-top:1em; margin-bottom: 0.01em; background-image: url('/static/resources/login/background.jpg'); background-size: cover; ">
+<h1>Upload Avatar!</h1>
+<div class="card-info card border" style="width: 200px;">
+<img class="card-img" src="{{current_user.avatar.first().avatar}}" height="200px">
+</div>
+<form action="" method="POST" enctype="multipart/form-data">
+	{{form.hidden_tag()}}
+		{{form.avatar(class="btn btn-light", style="width: 15em; margin-top: 1em;")}}<br>
+		{% for error in form.avatar.errors %}
+		<span style="color : red;">{{error}}</span>
+		{% endfor %}
+		{{form.submit(class="btn btn-outline-dark", style="width: 15em;")}} 	
+</form>
+</div>
+</div>
+{% endblock %}

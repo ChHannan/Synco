@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+<div class="navshadow container-fluid" style="background-color: #6F9FD8; height: 100%; padding-bottom: 2em; margin-top:1em; margin-bottom: 0.01em; background-image: url('/static/resources/login/background.jpg'); background-size: cover;">
+<h1>List of Members!</h1>
+<div class="gaadiex-list">
+{% for user in users %}
+	<div class="gaadiex-list-item border-b-1">
+		<div class="media" style="padding-top: 0.5em; padding-bottom: 0.5em;">
+		<div class="card-info card border media-left" style="width: 100px;">
+		<img class="card-img" src="{{user.avatar.first().avatar}}" height="100px">
+		</div>
+		<div class="gaadiex-list-item-text media-body" style="padding-left: 0.5em;">
+			<h3><a href="{{url_for('user', username=user.username)}}">{{user.username.title()}}</a></h3>
+			<h4></h4>
+			<p>
+			{% if user.confirmed_on %}
+			{{time.utcfromtimestamp(int(user.confirmed_on)).strftime('User since: %b %d, %Y')}}
+			{% else %}
+			Not verified!
+			{% endif %}
+			</p>
+        </div>
+		</div>
+    </div>
+    <div class="gaadiex-list-item border-b-1"></div>
+{% endfor %}
+</div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+<div class="navshadow container-fluid" style="background-color: #6F9FD8; height: 100%; padding-top: 1em; padding-bottom: 1.375em; margin-top:1em; margin-bottom: 0.01em; background-image: url('/static/resources/login/background.jpg'); background-size: cover;">
+<form action="" method="POST" role="form">
+	{{ form.hidden_tag() }}
+
+	{{ form.file_data(class="form-control", style="height: 383px;") }}
+	<div style="padding-top: 10px;">{{ form.submit(class="btn btn-outline-dark btn-block")}}</div>
+
+</form>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+	<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta charset="UTF-8">
+	<title> {{ title }} </title>
+		
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="/static/bootstrap/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="icon" type="image/png" href="/static/syncoimg4.png"/>
+	<script src="/static/bootstrap/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
+    <script src="/static/bootstrap/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="/static/bootstrap/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<style>
+		.deepshd {
+			color: #e0dfdc;
+			background-color: #333;
+			letter-spacing: .1em;
+			text-shadow: 0 -1px 0 #fff, 0 1px 0 #2e2e2e, 0 2px 0 #2c2c2c, 0 3px 0 #2a2a2a, 0 4px 0 #282828, 0 5px 0 #262626, 0 6px 0 #242424, 0 7px 0 #222, 0 8px 0 #202020, 0 9px 0 #1e1e1e, 0 10px 0 #1c1c1c, 0 11px 0 #1a1a1a, 0 12px 0 #181818, 0 13px 0 #161616, 0 14px 0 #141414, 0 15px 0 #121212, 0 22px 30px rgba(0, 0, 0, 0.9);
+		}
+		.navshadow {
+			-webkit-box-shadow: -1px 2px 2px 0px rgba(225,216,232,1);
+			-moz-box-shadow: -1px 1px 2px 0px rgba(225,216,232,1);
+			box-shadow: -1px 1px 5px 1px rgba(225,216,232,1);
+		}
+		.card-info:hover {
+			transition: 400ms;
+			box-shadow: -1px 5px 10px 5px rgba(217,217,217,1);
+		}
+		.social {
+			display:inline-flex;
+			float: right;
+		}
+		.social ul {
+			margin:0;
+			padding:0;
+		}
+		.social ul li {
+			list-style:none;
+			float:left;
+		}
+		.social ul li a {
+			display:block;
+			color:#aaa;
+			margin:0 10px;
+			font-size:20px;
+			transition:0.5s;
+			text-align:center;
+		}
+		.social ul li:hover a {
+			color:#e91e63;
+			transform:rotateY(360deg);
+		}
+		.about a {
+			display:inline-block;
+			color:#aaa;
+			font-size:20px;
+			transition:0.5s;
+		}
+		.gaadiex-list {list-style-type: none; margin: 0;padding: 0;}
+		.gaadiex-list>.gaadiex-list-item {padding: 0 22px;}
+		.gaadiex-list-item-img  {
+			float: left;
+			width: 58px;
+			height: 58px;
+			margin-top: 20px;
+			margin-bottom: 8px;
+			margin-right: 20px;
+			border-radius: 50%;
+		}
+		.gaadiex-list-item i  {
+			float: left;
+			font-size:48px;
+			width: 58px;
+			height: 58px;
+			margin-top: 20px;
+			margin-bottom: 8px;
+			margin-right: 20px;
+			border-radius: 50%;
+		}
+.border-b-1 {border-bottom: 1px solid rgba(162,162,162,.16);}
+	</style>
+	</head>
+	
+	<body>
+	<nav class="navbar navbar-dark bg-light navshadow">
+		<div class="mx-auto media">
+			<a href="{{url_for('home')}}">
+			<img class="media-left" style="center" src="/static/syncoimg4.png" width="75" height="55"></a>
+			<a href="{{url_for('home')}}">
+			<h5  class="media-body" style="color: black; font-family:courier new; margin-top: 1em" ><strong>Synco</strong></h5></a>
+		</div>
+		{% if current_user.is_anonymous %}
+		<div class="logsig" style="float: right; margin-top: 0.5em">
+			<a href="{{url_for('login')}}">Login</a>
+			<a style="padding-left: 0.25em;" href="{{url_for('register')}}">Register</a>
+		</div>
+		{% else %}
+		<div class="nav-item dropdown nav-justified navbar-right">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{current_user.username.title()}}
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" style="min-width: 60px;" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{{url_for('upload')}}">Upload</a>
+		  <a class="dropdown-item" href="{{url_for('avatar')}}">Avatar</a>
+          <a class="dropdown-item" href="{{url_for('user', username=current_user.username)}}">Profile</a>
+          <div class="dropdown-divider"></div>
+		  <a class="dropdown-item" href="{{url_for('users')}}">Members</a>
+		  <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="{{url_for('logout')}}">Logout</a>
+        </div>
+		</div>
+		{% endif %}
+	</nav>
+	
+	<div class="body">
+		{% with messages = get_flashed_messages() %}
+		{% if messages %}
+		<div class="alert alert-secondary" style="margin-top: 1em; padding-bottom: 6px;padding-top: 6px">
+		    {% for message in messages %}
+            <strong><li></strong>
+            {{ message }}
+            {% endfor %}
+        </div>
+		{% endif %}
+		{% endwith %}
+		{% block content %} {% endblock %}
+	</div>
+	<div class="container-fluid bg-light" style="height: 100%; padding-bottom: 0.25em; margin-top: 0.75em;">
+	<div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12">
+		<hr>
+		<span class="about" style="color:#aaa;">
+		Synco - Built by <a href="{{url_for('about')}}"><strong>WebCats</strong></a>
+		<span class="social">
+            <ul>
+                <li><a href="https://github.com/Diaga/Synco"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                <li><a href="mailto:DiagaAoS@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+				<li><a href="{{url_for('about')}}"><i class="fa fa-info" aria-hidden="true"></i></a></li>
+            </ul>
+        </span>
+		</div>
+	</div>
+	</div>
+	</body>
+</html>

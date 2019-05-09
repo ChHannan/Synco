@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+<div class="navshadow container-fluid" style="background-color: #6F9FD8; height: 100%; padding-bottom: 6.375em; margin-top:1em; margin-bottom: 0.01em; background-image: url('/static/resources/login/background.jpg'); background-size: cover;">
+	<div style="padding-top: 1em;">
+	<h1>Upload file to share!</h1>
+	<form action="" method="POST" enctype="multipart/form-data" role="form">
+		{{ form.hidden_tag() }}
+		
+		<span class="font-weight-bold small">{{ form.filename.label }}</span>
+		{{ form.filename(class="form-control", style="width: 15em;", placeholder="Enter filename") }}
+		<br>
+		
+		<div style="padding-top: 5px;">{{ form.file(class="btn btn-light", style="width: 15em;") }}</div>
+		{% for error in form.file.errors %}
+		<span style="color : red">[{{error}}]</span>
+		{% endfor %}
+		<br>
+		
+		{{ form.repo.label(style="small font-weight-bold") }}
+		<br>
+		<div style="padding-left: 2%;">
+		{% for repo in form.repo %}
+		<tr>
+			<td>{{repo}}</td>
+			<td>{{repo.label}}</td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</tr>
+		{% endfor %}
+		</div>
+		{% for error in form.repo.errors %}
+		<div class="alert alert-danger" style="width: 15em;"><strong>Please choose an option!</strong></div>
+		{% endfor %}
+		<p>
+		{{ form.submit(class="btn btn-outline-dark", style="width: 15em;") }}
+		</p>
+		
+	</form>
+	</div>
+</div>
+{% endblock %}
+		

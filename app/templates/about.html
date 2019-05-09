@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+.card {
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:300px;
+    min-height:400px;
+    background:#fff;
+    box-shadow:0 20px 50px rgba(0,0,0,.1);
+    border-radius:10px;
+    transition:0.5s;
+}
+.card:hover {
+    box-shadow:0 30px 70px rgba(0,0,0,.2);
+}
+.card .box {
+    position:absolute;
+    top:50%;
+    left:0;
+    transform:translateY(-50%);
+    text-align:center;
+    padding:20px;
+    box-sizing:border-box;
+    width:100%;
+}
+.card .box .img {
+    width:120px;
+    height:120px;
+    margin:0 auto;
+    border-radius:50%;
+    overflow:hidden;
+}
+.card .box .img img {
+    width:100%;
+    height:100%;
+}
+.card .box h2 {
+    font-size:20px;
+    color:#262626;
+    margin:20px auto;
+}
+.card .box h2 span {
+    font-size:14px;
+    background:#e91e63;
+    color:#fff;
+    display:inline-block;
+    padding:4px 10px;
+    border-radius:15px;
+}
+.card .box p {
+    color:#262626;
+}
+.card .box span {
+    display:inline-flex;
+}
+.card .box ul {
+    margin:0;
+    padding:0;
+}
+.card .box ul li {
+    list-style:none;
+    float:left;
+}
+.card .box ul li a {
+    display:block;
+    color:#aaa;
+    margin:0 10px;
+    font-size:20px;
+    transition:0.5s;
+    text-align:center;
+}
+.card .box ul li:hover a {
+    color:#e91e63;
+    transform:rotateY(360deg);
+}
+</style>
+<div class="container-fluid">
+<div class="navshadow container-fluid" style="background-color: #6F9FD8; height: 100%; padding-bottom: 1.375em; margin-top:1em; margin-bottom: 0.01em; background-image: url('/static/resources/login/background.jpg'); background-size: cover;">
+<h1>About Synco</h1>
+<p style="text-align: justify ;text-align-last:center">Synco is a project developed by two beginner developers. Synco aims to optimize
+file sharing experiencing at private, offices and organizations levels while putting user experience our first priority.</p>
+<h1>Meet the Team!</h1>
+	<div class="row">
+	<div class="col-lg-6 col-md-6 col-sm-12" style="margin-top: 0.25em;">
+		<div class="card">
+			<div class="box">
+				<div class="img">
+					<img src="/static/resources/about/maaz.png">
+				</div>
+				<h2>Maaz Bin Tahir<br><span>z0uk_</span></h2>
+				<p>If to be truthful is to be cruel, then lying must surely be an act of kindness. And so, kindness is a lie.</p>
+				<span>
+					<ul>
+						<li><a href="https://www.facebook.com/MaazBinTahir90"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+						<li><a href="https://www.instagram.com/z0uk_/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+						<li><a href="mailto:DiagaAoS@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+						<li><a href="https://github.com/Diaga/"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+					</ul>
+				</span>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-6 col-md-6 col-sm-12" style="margin-top: 0.25em;">
+		<div class="card">
+			<div class="box">
+				<div class="img">
+					<img src="/static/resources/about/hannan.jpg">
+				</div>
+				<h2>Abdul Hannan<br><span>Hacker</span></h2>
+				<p>In order to be irreplacable, one must always be different.</p>
+				<span>
+					<ul>
+						<li><a href="https://www.facebook.com/ch.hanan.15"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+						<li><a href="https://www.instagram.com/ch.hannan15/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+						<li><a href="mailto:ch.hannan15@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+						<li><a href="https://github.com/ChHannan/"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+					</ul>
+				</span>
+			</div>
+		</div>
+	</div>
+	</div>
+</div>
+</div>
+{% endblock %}

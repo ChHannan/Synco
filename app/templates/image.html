@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+<div class="navshadow container-fluid" style="background-color: #6F9FD8; height: 100%; padding-bottom: 1.375em; margin-top:1em; margin-bottom: 0.01em; background-image: url('/static/resources/login/background.jpg'); background-size: cover;">
+	<h3 style="padding-top: 1%;">Now showing: {{file.filename}}!</h3>
+	<div class="row align-items-center justify-content-center" style="margin-top: 1%;">
+		<image height="385px" src="{{src}}">
+	</div>
+</div>
+</div>
+{% endblock %}

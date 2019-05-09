@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+<div class="navshadow container-fluid" style="background-color: #6F9FD8; height: 100%; padding-bottom: 22.375em; margin-top:1em; margin-bottom: 0.01em; background-image: url('/static/resources/login/background.jpg'); background-size: cover;">
+{% if error == "invalid" %}
+<h1>Invalid token!</h1>
+<p>No such token exists. Please make sure to follow the exact link in the mail.</p>
+{% elif error == "expired" %}
+<h1>Expired token!</h1>
+<p>The specified token has expired. Please get a new token issued.</p>
+{% else %}
+    <meta http-equiv="refresh" content="0; URL='{{ url_for('home') }}'" />
+{% endif %}
+</div>
+</div>
+{% endblock %}

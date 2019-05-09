@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div>
+     <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);max-width: 200px;max-height:300px;text-align: center;margin-right: 10px;margin-top: 20px">
+        {% if user.avatar.filter_by(user=user).first() == None %}
+        <img src="/static/avatars/0.png" style="max-width: 200px;max-height: 200px">
+        {% else %}
+        <img src="{{ user.avatar.filter_by(user=user).first().avatar }}" style="max-width: 200px;max-height:200px">
+        {% endif %}
+        <h1>{{ user.username.title() }}</h1>
+     <p class="title" style="color: grey;font-size: 18px;" >{{datetime}}</p>
+     <p><a href="{{ url_for('avatar') }}"><button style="border: none;outline: 0;display: inline-block;padding: 8px;color: white;background-color: #000;
+        text-align: center;cursor: pointer;width: 100%;font-size: 18px;">Avatar</button></a></p>
+     </div>
+    </div>
+    <a  class="btn btn-primary" href="{{ url_for('users') }}" style="color: white;background-color:#343a40;position: absolute;right: 86%;top: 73%">
+              List of members
+          </a>
+<div class="user" style="margin-left: 30%;margin-top: -20%">
+    {% if request.args.get('action') == "download" %}
+    <meta http-equiv="refresh" content="0; URL='{{ url_for('user', username=user.username) }}'" />
+    {% endif %}
+     <p>
+      <a class="btn btn-primary" data-toggle="collapse" href="#public" role="button" aria-expanded="false" style="background-color: #343a40;border-color: #343a40">Public Repository</a>
+      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#private" aria-expanded="false" style="background-color: #343a40;border-color: #343a40">Private Repository</button>
+        </p>
+        <div class="row">
+          <div class="col">
+            <div class="collapse multi-collapse" id="public">
+              <div class="card card-body" style="overflow: scroll;height: 300px">
+                <ol>
+                    {% for file in files %}
+                    {% if file.repo == "public" %}
+                        {% if file.type %}
+							<a href="/{{file.type}}/{{token.query.filter_by(file_id=file.id).first().token}}">{{file.filename}}</a>
+						{% else %}
+							{{file.filename}}
+						{% endif %}
+                     <a href="{{ url_for('user', username=user.username, action='download', id=file.id) }}">Download</a>
+                        {% if user.username == current_user.username %}
+                            <a href="{{ url_for('user', username=current_user.username, action='delete', id=file.id) }}">Delete</a>
+                        {% endif %}
+                        <br>
+                    {% endif %}
+                    {% endfor %}
+                 </ol>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="collapse multi-collapse" id="private">
+              <div class="card card-body" style="overflow: scroll;height: 300px">
+                <ol>
+                    {% for file in files %}
+                    {% if file.repo == "private" %}
+						{% if file.type %}
+							<a href="{{url_for(file.type), token=token.query.filter_by(file_id=file.id).first().token)}}">{{file.filename}}</a>
+						{% else %}
+							{{file.filename}}
+						{% endif %}
+                     <a href="{{ url_for('user', username=user.username, action='download', id=file.id) }}">Download</a>
+                        {% if user.username == current_user.username %}
+                            <a href="{{ url_for('user', username=current_user.username, action='delete', id=file.id) }}">Delete</a>
+                        {% endif %}
+                        <br>
+                    {% endif %}
+                    {% endfor %}
+                 </ol>
+              </div>
+            </div>
+
+
+</div>
+</div>
+{% endblock %}

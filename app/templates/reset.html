@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+<div class="navshadow container-fluid" style="background-color: #6F9FD8; height: 100%; padding-bottom: 11.375em; margin-top:1em; margin-bottom: 0.01em; background-image: url('/static/resources/login/background.jpg'); background-size: cover;">
+<h1>Reset Password</h1>
+<form action="" method="POST">
+		{{ form.hidden_tag() }}
+		{{ form.password.label(class="font-weight-bold small") }}<br>
+		{{ form.password(class="form-control", style="width: 15em;", placeholder="Enter password") }}<br>
+		{% for error in form.password.errors %}
+		<span style="color : red">[{{error}}]</span>
+		{% endfor %}
+
+		{{ form.password2.label(class="font-weight-bold small") }}<br>
+		{{ form.password2(class="form-control", style="width: 15em;", placeholder="Confirm password") }}<br>
+		{% for error in form.password2.errors %}
+		<span style="color : red">[{{error}}]</span>
+		{% endfor %}
+		
+		{{ form.submit(class="btn btn-outline-dark btn-block", style="width: 15em;") }}
+</form>
+</div>
+</div>
+{% endblock %}
