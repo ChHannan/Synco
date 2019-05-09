@@ -1,4 +1,3 @@
-
 # Synco - Share your files the Synco way!
 Synco is an intranet file sharing server based on Python's web framework - Flask. It addresses the problem 
 of file sharing over LAN by removing the need of any third-party app or configuration once the server has 
